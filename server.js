@@ -16,8 +16,16 @@ app.get('/', (req, res) => {
 // Step 1: Redirect user to Google's OAuth 2.0 server
 app.get('/auth', (req, res) => {
     const scope = encodeURIComponent('openid email profile');
-    const redirectURL = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${scope}&access_type=offline&prompt=consent`;
-    res.redirect(redirectURL);
+    const redirect_uri = encodeURIComponent(REDIRECT_URI)
+    const googleAuthURL =
+        'https://accounts.google.com/o/oauth2/v2/auth?' +
+            `response_type=code` +
+            `&client_id=${CLIENT_ID}` +
+            `&redirect_uri=${redirect_uri}` +
+            `&scope=${scope}` +
+            `&access_type=offline` +
+            `&prompt=consent`;
+    res.redirect(googleAuthURL);
 });
 
 // Step 2: Google redirects back with ?code=XYZ
