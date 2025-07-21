@@ -10,7 +10,7 @@ REDIRECT_URI=http://localhost:5173/oauth2callback
 ## 2.
 ```bash
 npm init -y
-npm install express node-fetch@2 dotenv
+npm install express node-fetch@2 dotenv jsonwebtoken jwks-rsa
 ```
 
 # Run
